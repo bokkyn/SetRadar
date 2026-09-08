@@ -1,0 +1,41 @@
+import mongoose from "mongoose";
+
+const locationSchema = new mongoose.Schema(
+  {
+    id: { type: String, index: true },
+    name: { type: String, required: true },
+    type: String,
+    region: String,
+    geo: { type: mongoose.Schema.Types.Mixed },
+    address: String,
+    city: String,
+    country: String,
+    coordinates: String,
+    description: String,
+    whyMatches: String,
+    matchScore: Number,
+    matchExplanation: String,
+    images: { type: mongoose.Schema.Types.Mixed },
+    logistics: { type: mongoose.Schema.Types.Mixed },
+    restrictions: { type: mongoose.Schema.Types.Mixed },
+    scores: { type: mongoose.Schema.Types.Mixed },
+    keywords: [String],
+    sources: { type: mongoose.Schema.Types.Mixed },
+    warnings: { type: mongoose.Schema.Types.Mixed },
+    canWeShootScore: Number,
+    canWeShootLabel: String,
+    whyItMatches: String,
+    tags: [String],
+    status: String,
+    weather: { type: mongoose.Schema.Types.Mixed },
+    sun: { type: mongoose.Schema.Types.Mixed },
+    alternativeWindow: { type: mongoose.Schema.Types.Mixed },
+    conflicts: { type: [mongoose.Schema.Types.Mixed], default: [] },
+    breakdown: { type: mongoose.Schema.Types.Mixed },
+    ownerId: { type: String },
+    shootability: { type: Number, default: 0 },
+  },
+  { timestamps: true, strict: false },
+);
+
+export const Location = mongoose.model("Location", locationSchema);

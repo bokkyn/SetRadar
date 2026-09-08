@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build and tool output
+dist/
+build/
+.vite/
+.cache/
+coverage/
+*.tsbuildinfo
+vite.config.*.timestamp-*
+
+# Environment and local secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+/server/.env
+server/.env.local
+server/.env.*.local
+!server/.env.example
+
+# Logs and temporary files
+logs/
+*.log
+*-debug.log*
+.tmp-*
+tmp-*
+tmp-test-*.mjs
+
+# Local databases and exports
+*.sqlite
+*.sqlite3
+*.db-journal
+dump/
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Platform-managed agent state
+/.plugins/
+/.opencode-skills/
+.claude-replay.*

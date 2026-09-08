@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-ink-950: #070809;
+  --color-ink-900: #0c0e11;
+  --color-ink-850: #101317;
+  --color-ink-800: #14181d;
+  --color-ink-700: #1b2027;
+  --color-ink-600: #262d36;
+  --color-line: #23282f;
+
+  --color-fog-100: #f3f5f7;
+  --color-fog-300: #c3cad3;
+  --color-fog-500: #8a929c;
+  --color-fog-600: #6b727c;
+
+  --color-amber-signal: #e0a94a;
+  --color-amber-soft: #f0cd8a;
+
+  --color-status-confirmed: #4fb286;
+  --color-status-likely: #d8a24a;
+  --color-status-verify: #c9743d;
+  --color-status-restricted: #c05555;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink-950);
+  color: var(--color-fog-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(224, 169, 74, 0.28);
+  color: #fff;
+}
+
+/* Hide scrollbars until scrolling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*:hover::-webkit-scrollbar-thumb,
+*:focus-within::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+
+@keyframes sr-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes sr-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sr-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.sr-fade-up {
+  animation: sr-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
