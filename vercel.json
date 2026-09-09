@@ -1,6 +1,7 @@
 {
   "version": 2,
   "installCommand": "npm install && npm install --prefix server --omit=dev",
+  "outputDirectory": "client/dist",
   "rewrites": [
     {
       "source": "/api/agent",
