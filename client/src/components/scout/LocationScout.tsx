@@ -166,7 +166,7 @@ const LocationScout = forwardRef<HTMLDivElement, { initialPrompt?: string }>(
                 Location Scout
               </span>
               <span className="font-mono text-[11px] text-fog-600">
-                Scene â†’ real locations
+                Scene → real locations
               </span>
             </div>
 
@@ -196,7 +196,7 @@ const LocationScout = forwardRef<HTMLDivElement, { initialPrompt?: string }>(
               </div>
               <div>
                 <Label htmlFor="rad">
-                  Radius Â·{" "}
+                  Radius ·{" "}
                   {preferences.units === "imperial"
                     ? `${(radiusKm * 0.621371).toFixed(0)} mi`
                     : `${radiusKm} km`}
@@ -236,7 +236,7 @@ const LocationScout = forwardRef<HTMLDivElement, { initialPrompt?: string }>(
                     advanced ? "rotate-90" : ""
                   }`}
                 >
-                  â€ş
+                      ⌢
                 </span>
                 Additional settings
               </button>
@@ -258,7 +258,7 @@ const LocationScout = forwardRef<HTMLDivElement, { initialPrompt?: string }>(
                     </Select>
                   </div>
                   <div>
-                    <Label>Scene type Â· optional</Label>
+                    <Label>Scene type · optional</Label>
                     <div className="flex flex-wrap gap-2">
                       <button
                         type="button"

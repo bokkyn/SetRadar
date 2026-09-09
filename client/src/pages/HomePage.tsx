@@ -118,9 +118,9 @@ export default function HomePage() {
               {preview.name}
             </h3>
             <p className="mt-1 text-sm text-fog-500">
-              {preview.city}, {preview.region} Â·{" "}
+              {preview.city}, {preview.region} ?{" "}
               {formatDistance(preview.logistics.distanceKm, preferences.units)}{" "}
-              Â· {preview.logistics.travelMinutes} min
+              · {preview.logistics.travelMinutes} min
             </p>
             <p className="mt-4 leading-relaxed text-fog-300">
               {preview.whyItMatches}
@@ -159,7 +159,7 @@ export default function HomePage() {
             size="sm"
             onClick={() => navigate({ name: "how" })}
           >
-            How it works â†’
+            How it works →
           </Button>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

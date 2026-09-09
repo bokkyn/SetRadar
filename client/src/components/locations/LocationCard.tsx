@@ -69,7 +69,7 @@ export default function LocationCard({
         </span>
         {showLogistics && (
           <span className="absolute bottom-3 left-3 font-mono text-[11px] text-fog-200">
-            {formatDistance(location.logistics.distanceKm, preferences.units)} Â·{" "}
+            {formatDistance(location.logistics.distanceKm, preferences.units)} ?{" "}
             {formatTravel(location.logistics.travelMinutes)}
           </span>
         )}
@@ -89,14 +89,14 @@ export default function LocationCard({
 
         <div className="mt-4 flex items-center justify-between">
           <span className="text-[13px] text-fog-500 transition-colors group-hover:text-amber-signal">
-            View details â†’
+            View details →
           </span>
           <Button
             variant={saved ? "secondary" : "outline"}
             size="sm"
             onClick={save}
           >
-            {saved ? "Saved âś“" : "Save"}
+            {saved ? "Saved ✓" : "Save"}
           </Button>
         </div>
       </div>

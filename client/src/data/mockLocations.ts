@@ -74,7 +74,7 @@ const raw: Omit<Location, "shootability">[] = [
       blueHourEnd: "19:25",
     },
     alternativeWindow: {
-      label: "Wednesday, 16:30â€“19:30",
+      label: "Wednesday, 16:30?19:30",
       reasons: ["Lower rain probability", "Better golden-hour overlap"],
     },
     sources: [
@@ -234,7 +234,7 @@ const raw: Omit<Location, "shootability">[] = [
       {
         key: "hours",
         label: "Opening hours",
-        value: "08:00â€“20:00",
+        value: "08:00?20:00",
         status: "confirmed",
       },
     ],

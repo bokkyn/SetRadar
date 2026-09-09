@@ -59,7 +59,7 @@ export default function ProjectOverviewPage({ id }: { id: string }) {
         onClick={() => navigate({ name: "projects" })}
         className="mb-4 text-sm text-fog-500 hover:text-fog-100"
       >
-        â† Projects
+        · Projects
       </button>
 
       {/* Header */}
@@ -95,10 +95,10 @@ export default function ProjectOverviewPage({ id }: { id: string }) {
           </div>
           {stats.upcoming ? (
             <p className="mt-1 text-fog-100">
-              {formatShootDate(stats.upcoming.shootDate!)} Â·{" "}
+              {formatShootDate(stats.upcoming.shootDate!)} ·{" "}
               {stats.upcoming.startTime || "TBD"}
               <span className="ml-2 text-fog-500">
-                Scene {stats.upcoming.number || "?"}
+                Scene {stats.upcoming.number || "-"}
               </span>
             </p>
           ) : (
@@ -148,7 +148,7 @@ export default function ProjectOverviewPage({ id }: { id: string }) {
             variant="outline"
             onClick={() => navigate({ name: "comparison" })}
           >
-            Compare locations in this project â†’
+            Compare locations in this project →
           </Button>
         </div>
       )}

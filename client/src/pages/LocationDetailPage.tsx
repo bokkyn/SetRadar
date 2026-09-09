@@ -149,7 +149,7 @@ export default function LocationDetailPage({ id }: { id: string }) {
   if (locationLoading) {
     return (
       <div className="mx-auto max-w-3xl px-5 py-24 text-center text-sm text-fog-500">
-        Loading locationâ€¦
+        Loading location…
       </div>
     )
   }
@@ -205,7 +205,7 @@ export default function LocationDetailPage({ id }: { id: string }) {
         onClick={goBack}
         className="mb-4 text-sm text-fog-500 hover:text-fog-100"
       >
-        â† Back
+        ← Back
       </button>
 
       {/* Header */}
@@ -225,7 +225,7 @@ export default function LocationDetailPage({ id }: { id: string }) {
         </div>
         <div className="flex items-center gap-2">
           <Button variant={saved ? "secondary" : "primary"} onClick={save}>
-            {saved ? "Saved âś“" : "Save"}
+            {saved ? "Saved ✓" : "Save"}
           </Button>
           <Button variant="outline" onClick={addToProject}>
             Add to project
@@ -279,7 +279,7 @@ export default function LocationDetailPage({ id }: { id: string }) {
               ({ projectId, projectTitle, locationProject }) => (
                 <div key={projectId}>
                   <div className="mb-2 font-mono text-[10px] uppercase tracking-wider text-fog-600">
-                    Project Â· {projectTitle}
+                    Project · {projectTitle}
                   </div>
                   <LocationSceneManager
                     projectId={projectId}
@@ -327,7 +327,7 @@ export default function LocationDetailPage({ id }: { id: string }) {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 rows={2}
-                placeholder="Ask municipality about night filmingâ€¦"
+                placeholder="Ask municipality about night filming…"
                 className="w-full resize-none rounded-xl border border-line bg-ink-900 p-3 text-sm text-fog-100 placeholder:text-fog-600 outline-none focus:border-amber-signal/60"
               />
               <div className="mt-2 flex justify-end">

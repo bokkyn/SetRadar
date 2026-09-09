@@ -90,7 +90,7 @@ export default function AddToProjectModal({
             >
               {projects.map((p) => (
                 <option key={p.id} value={p.id}>
-                  {p.title} Â· {p.productionType}
+                  {p.title} · {p.productionType}
                 </option>
               ))}
             </Select>

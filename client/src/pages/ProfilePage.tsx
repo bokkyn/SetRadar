@@ -29,7 +29,7 @@ export default function ProfilePage() {
             {user?.name}
           </h1>
           <p className="text-sm text-fog-500">
-            {user?.role} Â· {user?.email}
+            {user·.role} · {user·.email}
           </p>
         </div>
       </div>

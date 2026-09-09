@@ -130,7 +130,7 @@ export function WeatherPanel({
   const rows = [
     weather?.temperatureC === undefined
       ? null
-      : ["Temperature", `${weather.temperatureC}Â°C`],
+      : ["Temperature", `${weather.temperatureC}°C`],
     weather?.rainProbability === undefined
       ? null
       : ["Rain / precipitation probability", `${weather.rainProbability}%`],
@@ -148,7 +148,7 @@ export function WeatherPanel({
         <PanelHeader
           label={
             completeDate
-              ? `Weather Â· ${formatShootDate(selectedDate)}`
+              ? `Weather · ${formatShootDate(selectedDate)}`
               : "Weather"
           }
         />
@@ -156,7 +156,7 @@ export function WeatherPanel({
           <span
             className={`font-mono text-[11px] uppercase tracking-wider ${riskStyle[weather.risk]}`}
           >
-            {weather.risk} risk Â· {weather.score}/100
+            {weather.risk} risk · {weather.score}/100
           </span>
         )}
       </div>
@@ -200,7 +200,7 @@ export function WeatherPanel({
       </div>
       {loading && (
         <p className="mb-4 text-sm text-fog-400">
-          Loading forecastâ€¦
+          Loading forecast…
         </p>
       )}
       {error && (
@@ -250,7 +250,7 @@ export function SunTimeline({
   ]
   return (
     <div className="rounded-2xl border border-line bg-ink-850 p-5">
-      <PanelHeader label="Shoot timing Â· Sun" />
+      <PanelHeader label="Shoot timing · Sun" />
       {/* Horizontal on desktop, vertical on mobile */}
       <ol className="relative grid grid-cols-1 gap-4 sm:grid-cols-4 sm:gap-0">
         <div className="absolute left-2 top-2 bottom-2 w-px bg-line sm:left-0 sm:right-0 sm:top-2 sm:h-px sm:w-auto" />
@@ -282,7 +282,7 @@ export function SunTimeline({
           </div>
           <ul className="mt-1.5 space-y-0.5 text-[13px] text-fog-400">
             {location.alternativeWindow.reasons.map((r) => (
-              <li key={r}>Â· {r}</li>
+              <li key={r}>? {r}</li>
             ))}
           </ul>
         </div>
@@ -316,7 +316,7 @@ export function ProductionRestrictions({ location }: { location: Location }) {
                   )}
                   {r.detail && (
                     <span className="flex h-5 w-4 items-center justify-center text-fog-600 transition-transform group-open:rotate-180">
-                      âŚ„
+                      ⌄
                     </span>
                   )}
                 </span>
@@ -383,7 +383,7 @@ export function LocationSources({ location }: { location: Location }) {
         onClick={() => setOpen((value) => !value)}
       >
         <PanelHeader label="Sources" />
-        <span className="text-fog-500">{open ? "âŚ" : "âŚ„"}</span>
+        <span className="text-fog-500">{open ? "⌃" : "⌄"}</span>
       </button>
       {open && (
         <>

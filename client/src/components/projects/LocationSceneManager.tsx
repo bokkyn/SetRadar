@@ -339,7 +339,7 @@ export default function LocationSceneManager({
                     {sceneChecks[s.id].forecast.summary}
                   </div>
                   <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-fog-500">
-                    <span>{sceneChecks[s.id].forecast.temperatureC}Â°C</span>
+                    <span>{sceneChecks[s.id].forecast.temperatureC}°C</span>
                     <span>
                       {sceneChecks[s.id].forecast.rainProbability}% rain
                     </span>

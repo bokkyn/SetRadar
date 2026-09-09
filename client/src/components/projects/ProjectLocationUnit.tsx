@@ -232,7 +232,7 @@ export default function ProjectLocationUnit({
               </h3>
             </div>
             <p className="mt-0.5 text-[13px] text-fog-500">
-              {location.city} Â· Shootability {location.shootability}
+              {location.city} · Shootability {location.shootability}
             </p>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-[12px] text-fog-400">
               <span>
@@ -241,7 +241,7 @@ export default function ProjectLocationUnit({
               </span>
               {nextShoot && (
                 <span className="font-mono">
-                  Next Â· {formatShootDateShort(nextShoot.shootDate!)}{" "}
+                  Next · {formatShootDateShort(nextShoot.shootDate!)}{" "}
                   {nextShoot.startTime || "TBD"}
                 </span>
               )}
@@ -375,7 +375,7 @@ export default function ProjectLocationUnit({
                         {sceneChecks[s.id].forecast.summary}
                       </div>
                       <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-fog-500">
-                        <span>{sceneChecks[s.id].forecast.temperatureC}Â°C</span>
+                        <span>{sceneChecks[s.id].forecast.temperatureC}°C</span>
                         <span>
                           {sceneChecks[s.id].forecast.rainProbability}% rain
                         </span>

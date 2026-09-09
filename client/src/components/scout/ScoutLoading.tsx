@@ -26,7 +26,7 @@ export default function ScoutLoading() {
         <div className="h-2 w-2 rounded-full bg-amber-signal" />
       </div>
       <h3 className="mt-6 font-display text-lg font-semibold text-white">
-        Researching locationsâ€¦
+        Researching locations…
       </h3>
       <ul className="mt-4 space-y-2">
         {scoutStages.map((s, i) => (
@@ -40,7 +40,7 @@ export default function ScoutLoading() {
                     : "border-line text-fog-600"
               }`}
             >
-              {i < stage ? "âś“" : ""}
+              {i < stage ? "✓" : ""}
             </span>
             <span className={i <= stage ? "text-fog-100" : "text-fog-600"}>
               {s}

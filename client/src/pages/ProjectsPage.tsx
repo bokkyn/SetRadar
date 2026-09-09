@@ -217,7 +217,7 @@ export default function ProjectsPage() {
                   onClick={() => navigate({ name: "project", id: project.id })}
                 >
                   <div className="font-mono text-[11px] uppercase tracking-wider text-amber-signal">
-                    {project.productionType} Â· {project.genre}
+                    {project.productionType} · {project.genre}
                   </div>
                   <h2 className="mt-1 font-display text-3xl font-bold text-white group-hover:text-amber-signal">
                     {project.title}

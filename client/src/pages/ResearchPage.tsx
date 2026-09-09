@@ -220,14 +220,14 @@ function CityMatchMode({
             onClick={run}
             disabled={loading || !city.trim() || !target.trim()}
           >
-            {loading ? "Matchingâ€¦" : "Find matches"}
+            {loading ? "Matching…" : "Find matches"}
           </Button>
         </div>
       </Panel>
 
       {loading && (
         <Running
-          label={`Looking for ${city} locations that could pass for ${target}â€¦`}
+          label={`Looking for ${city} locations that could pass for ${target}…`}
         />
       )}
 
@@ -283,7 +283,7 @@ function FilmSearchMode() {
       <Panel>
         <div className="grid gap-3 sm:grid-cols-2">
           <div>
-            <Label htmlFor="fs-city">City Â· required</Label>
+            <Label htmlFor="fs-city">City · required</Label>
             <Input
               id="fs-city"
               value={city}
@@ -291,7 +291,7 @@ function FilmSearchMode() {
             />
           </div>
           <div>
-            <Label htmlFor="fs-genre">Genre Â· optional</Label>
+            <Label htmlFor="fs-genre">Genre · optional</Label>
             <Input
               id="fs-genre"
               value={genre}
@@ -317,13 +317,13 @@ function FilmSearchMode() {
         </div>
         <div className="mt-4 flex justify-end">
           <Button onClick={run} disabled={loading || !city.trim()}>
-            {loading ? "Searchingâ€¦" : "Search films"}
+            {loading ? "Searching…" : "Search films"}
           </Button>
         </div>
       </Panel>
 
       {loading && (
-        <Running label={`Finding films shot in or around ${city}â€¦`} />
+        <Running label={`Finding films shot in or around ${city}…`} />
       )}
 
       {result && !loading && (
@@ -351,7 +351,7 @@ function FilmSearchMode() {
                       {f.title}
                     </h3>
                     <span className="font-mono text-[12px] text-fog-500">
-                      {f.year} Â· {f.genre}
+                      {f.year} · {f.genre}
                     </span>
                   </div>
                   <p className="mt-1.5 text-sm leading-relaxed text-fog-400">
@@ -462,7 +462,7 @@ function HistoryCheckMode() {
         )}
 
         <div className="mt-3">
-          <Label htmlFor="hc-ctx">Scene / context Â· optional</Label>
+          <Label htmlFor="hc-ctx">Scene / context · optional</Label>
           <Input
             id="hc-ctx"
             value={context}
@@ -472,13 +472,13 @@ function HistoryCheckMode() {
         </div>
         <div className="mt-4 flex justify-end">
           <Button onClick={run} disabled={loading || !location.trim()}>
-            {loading ? "Checkingâ€¦" : "Check historical fit"}
+            {loading ? "Checking…" : "Check historical fit"}
           </Button>
         </div>
       </Panel>
 
       {loading && (
-        <Running label={`Checking whether ${location} fits ${year}â€¦`} />
+        <Running label={`Checking whether ${location} fits ${year}…`} />
       )}
 
       {result && !loading && (
@@ -526,7 +526,7 @@ function HistoryCheckMode() {
               </h3>
               <ul className="space-y-1.5 text-[13px] leading-relaxed text-fog-300">
                 {result.toVerify.map((v) => (
-                  <li key={v}>Â· {v}</li>
+                  <li key={v}>? {v}</li>
                 ))}
               </ul>
             </Panel>

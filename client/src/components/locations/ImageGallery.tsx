@@ -70,7 +70,7 @@ export default function ImageGallery({
           rel="noreferrer"
           className="flex h-14 items-center justify-center rounded-lg border border-dashed border-line text-center text-[11px] text-fog-500 transition-colors hover:border-amber-signal/50 hover:text-amber-signal sm:h-16"
         >
-          More photos Â· Google Images
+          More photos · Google Images
         </a>
       </div>
     </div>

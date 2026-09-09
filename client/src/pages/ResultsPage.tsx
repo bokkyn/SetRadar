@@ -12,7 +12,7 @@ export default function ResultsPage({ result }: { result: ResearchResult }) {
           onClick={() => navigate({ name: "home" })}
           className="mb-2 text-sm text-fog-500 hover:text-fog-100"
         >
-          â† New search
+          ← New search
         </button>
         <div>
           <div>

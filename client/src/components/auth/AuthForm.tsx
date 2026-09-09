@@ -84,7 +84,7 @@ export default function AuthForm({
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="â€˘â€˘â€˘â€˘â€˘â€˘â€˘â€˘"
+          placeholder="????????"
           autoComplete="current-password"
           minLength={6}
         />

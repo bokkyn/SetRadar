@@ -76,7 +76,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="border-t border-line py-5 text-center font-mono text-[11px] uppercase tracking-wider text-fog-600">
-        Â© 2026 SetRadar
+        · 2026 SetRadar
       </div>
     </footer>
   )

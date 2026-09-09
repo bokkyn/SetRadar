@@ -34,7 +34,7 @@ const STEPS = [
     n: "01",
     t: "Describe the scene",
     d: "SetRadar combines natural language with a few structured controls - location, radius, project type, and optional scene type.",
-    ex: "â€śAbandoned industrial interior near Zagreb for a night shoot.â€ť",
+    ex: "?Abandoned industrial interior near Zagreb for a night shoot.?",
   },
   {
     n: "02",
@@ -46,13 +46,13 @@ const STEPS = [
     n: "03",
     t: "Evaluate the production",
     d: "The goal isn't just a place that looks right - it's whether the production can realistically shoot there.",
-    ex: "Shootability 88 Â· Permit Verify Â· Vehicle access Available Â· Golden hour 18:12",
+    ex: "Shootability 88 · Permit Verify · Vehicle access Available · Golden hour 18:12",
   },
   {
     n: "04",
     t: "Build the project",
     d: "Save promising locations, assign scenes, plan shoot dates, and compare candidates within the same production.",
-    ex: "Location + Scene 12 + Oct 12 + 17:00â€“20:00 + warnings",
+    ex: "Location + Scene 12 + Oct 12 + 17:00?20:00 + warnings",
   },
 ];
 
@@ -168,7 +168,7 @@ export default function HowItWorksPage() {
             </p>
             <ul className="mt-4 space-y-2 text-sm text-fog-400">
               {["Search results", "Images", "Generic pages"].map((x) => (
-                <li key={x}>Â· {x}</li>
+                <li key={x}>? {x}</li>
               ))}
             </ul>
           </div>
@@ -193,7 +193,7 @@ export default function HowItWorksPage() {
                 "Shootability",
                 "Sources",
               ].map((x) => (
-                <li key={x}>Â· {x}</li>
+                <li key={x}>? {x}</li>
               ))}
             </ul>
           </div>
@@ -366,7 +366,7 @@ export default function HowItWorksPage() {
             </p>
             <div className="mt-4 grid grid-cols-2 gap-3">
               {[
-                ["Temperature", "14Â°C"],
+                ["Temperature", "14°C"],
                 ["Rain", "20%"],
                 ["Wind", "12 km/h"],
                 ["Visibility", "18 km"],
@@ -428,7 +428,7 @@ export default function HowItWorksPage() {
             <div className="mt-4 space-y-3">
               {[
                 ["Permit required", "verify", "Municipal film office"],
-                ["Access window", "likely", "07:00â€“20:00, gated after hours"],
+                ["Access window", "likely", "07:00?20:00, gated after hours"],
                 ["Drone use", "restricted", "Controlled airspace nearby"],
                 ["Private property", "likely", "Owner permission needed"],
               ].map(([label, status, detail]) => (
@@ -542,7 +542,7 @@ export default function HowItWorksPage() {
               "They set a 25 km radius and Feature Film project type, with an Industrial scene type in advanced settings.",
               "SetRadar returns 5 locations. They open Former Gredelj Railway Complex (shootability 88).",
               "They add it to Midnight Signal and attach Scene 12.",
-              "They schedule October 12, 17:00â€“20:00 - SetRadar shows golden hour, sunset, weather, access and permit verification.",
+              "They schedule October 12, 17:00?20:00 - SetRadar shows golden hour, sunset, weather, access and permit verification.",
               "They compare it against Zagreb Fair Pavilion within the same project and decide.",
             ].map((step, i) => (
               <li
