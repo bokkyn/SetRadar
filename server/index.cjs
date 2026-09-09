@@ -17,7 +17,7 @@ async function start({ listen = true } = {}) {
     import("./middleware.js"),
     import("./routes.js"),
   ]);
-  const locationScoutRoutes = cjsRequire("./routes/locationScout.js");
+  const locationScoutRoutes = cjsRequire("./routes/locationScout.cjs");
   const app = express();
 
   if (!config.mongoUri) throw new Error("MONGODB_URI is not set in server/.env.");

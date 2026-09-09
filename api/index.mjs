@@ -1,7 +1,7 @@
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const { start } = require("../server/index.js");
+const { start } = require("../server/index.cjs");
 
 let appPromise;
 

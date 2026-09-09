@@ -1,6 +1,6 @@
 const gis = require("g-i-s");
 const sharp = require("sharp");
-const parallelService = require("./parallelService");
+const parallelService = require("./parallelService.cjs");
 
 const DUMMY_MODE = false;
 
@@ -247,7 +247,7 @@ class ImageSearchService {
   }
 
   async translateToLocalLanguage(candidate) {
-    const geminiService = require("./geminiService");
+    const geminiService = require("./geminiService.cjs");
     const schema = {
       type: "object",
       properties: {
@@ -287,7 +287,7 @@ class ImageSearchService {
 
   isGeminiConfigured() {
     try {
-      return require("./geminiService").isConfigured();
+      return require("./geminiService.cjs").isConfigured();
     } catch {
       return false;
     }
@@ -671,7 +671,7 @@ class ImageSearchService {
 
   async filterRelevantImages(candidate, context, images) {
     if (images.length === 0) return [];
-    const geminiService = require("./geminiService");
+    const geminiService = require("./geminiService.cjs");
     const candidates = images.filter((image) => !this.looksLikeEventOrBusinessImage(image));
     if (!geminiService.isConfigured()) return candidates;
 
@@ -701,7 +701,7 @@ class ImageSearchService {
   async checkImageRelevance(candidate, context, image) {
     if (DUMMY_MODE) return { relevant: true, score: 0 };
 
-    const geminiService = require("./geminiService");
+    const geminiService = require("./geminiService.cjs");
     if (!geminiService.isConfigured() || image.fallback)
       return { relevant: true, score: 0 };
     try {

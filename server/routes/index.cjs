@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const geminiService = require("../services/geminiService");
-const parallelService = require("../services/parallelService");
+const geminiService = require("../services/geminiService.cjs");
+const parallelService = require("../services/parallelService.cjs");
 
 router.get("/health", (req, res) => {
   res.json({

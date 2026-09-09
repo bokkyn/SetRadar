@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const imageSearchService = require("../services/imageSearchService");
+const imageSearchService = require("../services/imageSearchService.cjs");
 const {
   validateWorkflowInput,
   validateCityExists,
   getScoutPreflightFallback,
   validateResearchInput,
   sanitizeObject,
-} = require("../utils/security");
+} = require("../utils/security.cjs");
 
 const DUMMY_DATA = false;
 
@@ -108,8 +108,8 @@ router.post("/", async (req, res) => {
       });
     }
 
-    const geminiService = require("../services/geminiService");
-    const parallelService = require("../services/parallelService");
+    const geminiService = require("../services/geminiService.cjs");
+    const parallelService = require("../services/parallelService.cjs");
     const input = sanitizeObject(req.body);
 
     let preflight;
@@ -340,7 +340,7 @@ router.post("/", async (req, res) => {
  */
 async function analyzeLocationDetails(candidate, context) {
   try {
-    const geminiService = require("../services/geminiService");
+    const geminiService = require("../services/geminiService.cjs");
     return await geminiService.analyzeLocationDetails(candidate, context);
   } catch (error) {
     console.error(`Details analysis error: ${error.message}`);

@@ -4,11 +4,11 @@ import { FunctionTool, LlmAgent, ParallelAgent } from "@google/adk"
 
 const require = createRequire(import.meta.url)
 
-const geminiService = require("../services/geminiService.js")
+const geminiService = require("../services/geminiService.cjs")
 
-const parallelService = require("../services/parallelService.js")
+const parallelService = require("../services/parallelService.cjs")
 
-const imageSearchService = require("../services/imageSearchService.js")
+const imageSearchService = require("../services/imageSearchService.cjs")
 
 const schema = (properties, required) => ({
   type: "object",

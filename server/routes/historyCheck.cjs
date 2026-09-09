@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const geminiService = require("../services/geminiService");
-const parallelService = require("../services/parallelService");
-const { validateWorkflowInput, sanitizeObject } = require("../utils/security");
+const geminiService = require("../services/geminiService.cjs");
+const parallelService = require("../services/parallelService.cjs");
+const { validateWorkflowInput, sanitizeObject } = require("../utils/security.cjs");
 
 router.post("/", async (req, res) => {
   try {

@@ -13,12 +13,12 @@ const { agentRoutes } = await import("./agents/express-adapter.js");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-const indexRoutes = require("./routes/index.js");
-const locationScoutRoutes = require("./routes/locationScout.js");
-const cityLookalikeRoutes = require("./routes/cityLookalike.js");
-const filmsInCityRoutes = require("./routes/filmsInCity.js");
-const historyCheckRoutes = require("./routes/historyCheck.js");
-const { antiAbuseMiddleware } = require("./utils/security.js");
+const indexRoutes = require("./routes/index.cjs");
+const locationScoutRoutes = require("./routes/locationScout.cjs");
+const cityLookalikeRoutes = require("./routes/cityLookalike.cjs");
+const filmsInCityRoutes = require("./routes/filmsInCity.cjs");
+const historyCheckRoutes = require("./routes/historyCheck.cjs");
+const { antiAbuseMiddleware } = require("./utils/security.cjs");
 
 app.use(cors());
 app.use(express.json({ limit: "10kb" }));

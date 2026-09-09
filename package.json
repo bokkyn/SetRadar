@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:database\" \"npm run dev:server\" \"npm run dev:ai\" \"npm run dev:client\"",
     "dev:client": "vite --host 0.0.0.0",
-    "dev:server": "node server/index.js",
+    "dev:server": "node server/index.cjs",
     "dev:ai": "node server/setradarServer.js",
     "dev:database": "json-server db.json --port 3001",
     "server": "npm run dev:server",

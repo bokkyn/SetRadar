@@ -4,14 +4,13 @@ import orchestratorAgent, {
   historyCheckAgent,
 } from "./index.js"
 import { createRequire } from "node:module"
-import {
+const require = createRequire(import.meta.url)
+const geminiService = require("../services/geminiService.cjs")
+const {
   getScoutPreflightFallback,
   validateCityExists,
   validateResearchInput,
-} from "../utils/security.js"
-
-const require = createRequire(import.meta.url)
-const geminiService = require("../services/geminiService.js")
+} = require("../utils/security.cjs")
 
 const runAgentTool = async (agent, args) => {
   const tool = agent.tools[0]
