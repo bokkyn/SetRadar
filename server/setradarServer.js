@@ -75,7 +75,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+if (!process.env.VERCEL) app.listen(PORT, () => {
   console.log("=================================");
   console.log("đźŽ¬ SetRadar Backend Server (ADK Multi-Agent)");
   console.log("=================================");
@@ -103,3 +103,5 @@ app.listen(PORT, () => {
   console.log("  GET  /api/agent/health");
   console.log("=================================\n");
 });
+
+export default app;

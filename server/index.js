@@ -6,7 +6,12 @@ const { createRequire } = require("node:module");
 
 const cjsRequire = createRequire(__filename);
 
-async function start() {
+let appPromise;
+
+async function start({ listen = true } = {}) {
+  if (appPromise) return appPromise;
+
+  appPromise = (async () => {
   const [{ config }, { errorHandler }, { apiRouter }] = await Promise.all([
     import("./config.js"),
     import("./middleware.js"),
@@ -15,18 +20,10 @@ async function start() {
   const locationScoutRoutes = cjsRequire("./routes/locationScout.js");
   const app = express();
 
-  if (!config.mongoUri) {
-    console.error("MONGODB_URI is not set in server/.env.");
-    process.exit(1);
-  }
+  if (!config.mongoUri) throw new Error("MONGODB_URI is not set in server/.env.");
 
-  mongoose
-    .connect(config.mongoUri, { dbName: config.mongoDb })
-    .then(() => console.log("Connected to MongoDB"))
-    .catch((error) => {
-      console.error("MongoDB connection error:", error);
-      process.exit(1);
-    });
+  await mongoose.connect(config.mongoUri, { dbName: config.mongoDb });
+  console.log("Connected to MongoDB");
 
   const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:8443")
     .split(",")
@@ -50,12 +47,23 @@ async function start() {
   app.use("/api", apiRouter);
   app.use(errorHandler);
 
-  app.listen(config.port, () => {
-    console.log(`Express API listening on http://localhost:${config.port}`);
-  });
+  if (listen) {
+    app.listen(config.port, () => {
+      console.log(`Express API listening on http://localhost:${config.port}`);
+    });
+  }
+
+  return app;
+  })();
+
+  return appPromise;
 }
 
-start().catch((error) => {
-  console.error("Failed to start Express API:", error);
-  process.exit(1);
-});
+module.exports = { start };
+
+if (require.main === module) {
+  start().catch((error) => {
+    console.error("Failed to start Express API:", error);
+    process.exit(1);
+  });
+}

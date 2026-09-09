@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "installCommand": "npm install && npm install --prefix server --omit=dev",
+  "rewrites": [
+    {
+      "source": "/api/agent",
+      "destination": "/api/agent.cjs"
+    },
+    {
+      "source": "/api/agent/:path*",
+      "destination": "/api/agent.cjs"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.cjs"
+    }
+  ],
+  "functions": {
+    "api/index.cjs": {
+      "maxDuration": 300
+    },
+    "api/agent.cjs": {
+      "maxDuration": 300
+    }
+  }
+}
