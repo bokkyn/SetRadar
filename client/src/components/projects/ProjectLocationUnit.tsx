@@ -263,7 +263,7 @@ export default function ProjectLocationUnit({
           }}
           className="self-start rounded-lg border border-line px-2.5 py-1.5 text-sm text-fog-500 transition-colors hover:border-status-restricted/50 hover:text-status-restricted"
         >
-          Ă—
+          ×
         </button>
       </div>
 

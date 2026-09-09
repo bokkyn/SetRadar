@@ -182,7 +182,7 @@ const imageTool = new FunctionTool({
           null,
         ),
 
-        35000,
+        16000,
 
         `Image search timed out for ${locationName}`,
       )

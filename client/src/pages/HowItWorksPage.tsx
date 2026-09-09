@@ -204,7 +204,7 @@ export default function HowItWorksPage() {
       </Section>
 
       {/* Creative vs practical */}
-      <Section eyebrow="The core idea" title="Creative fit Ă— practical fit">
+      <Section eyebrow="The core idea" title="Creative fit × practical fit">
         <div className="grid gap-5 md:grid-cols-2">
           <div className="rounded-xl border border-line bg-ink-850 p-6">
             <h3 className="font-display text-lg font-semibold text-white">

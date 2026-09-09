@@ -29,7 +29,7 @@ export async function findLocations(
   query: ScoutQuery,
 ): Promise<ResearchResult> {
   try {
-    console.log("đź”Ą AGENT: Using Google ADK multi-agent system")
+    console.log("🔧 AGENT: Using Google ADK multi-agent system")
     const response = await postBackend<{ candidates?: BackendCandidate[] }>(
       "/api/agent/scout",
       {

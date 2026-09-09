@@ -149,7 +149,7 @@ router.post("/", async (req, res) => {
           candidate.warnings = generateWarnings(details);
 
           console.log(
-            `âś… ${candidate.name}: ${images.length} images, score: ${candidate.canWeShootScore}`,
+            `✅ ${candidate.name}: ${images.length} images, score: ${candidate.canWeShootScore}`,
           );
 
           return candidate;
@@ -176,7 +176,7 @@ router.post("/", async (req, res) => {
     console.log("\n=== FINAL RESULTS ===");
     response.candidates.forEach((c, i) => {
       console.log(
-        `${i + 1}. ${c.name}: ${c.images?.length ? `âś… ${c.images.length} images` : "âťŚ No images"}`,
+        `${i + 1}. ${c.name}: ${c.images?.length ? `✅ ${c.images.length} images` : "❌ No images"}`,
       );
     });
 

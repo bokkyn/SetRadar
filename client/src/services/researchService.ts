@@ -20,7 +20,7 @@ export async function runCityMatch(input: {
 }): Promise<CityMatchResult> {
   const { city, target } = input;
   try {
-    console.log("đź”Ą AGENT: City match using Gemini + Parallel");
+    console.log("🔧 AGENT: City match using Gemini + Parallel");
     const response = await postBackend<{
       candidates?: BackendCandidate[];
       targetCity?: string;
@@ -118,7 +118,7 @@ export async function runFilmSearch(input: {
 }): Promise<FilmSearchResult> {
   const { city, genre } = input;
   try {
-    console.log("đź”Ą AGENT: Film search using Gemini + Parallel");
+    console.log("🔧 AGENT: Film search using Gemini + Parallel");
     const response = await postBackend<{
       city?: string;
       genre?: string;
@@ -158,7 +158,7 @@ export async function runHistoryCheck(input: {
 }): Promise<HistoryCheckResult> {
   const { location, storyYear, context } = input;
   try {
-    console.log("đź”Ą AGENT: History check using Gemini + Parallel");
+    console.log("🔧 AGENT: History check using Gemini + Parallel");
     const response = await postBackend<{
       location?: string;
       storyYear?: number;

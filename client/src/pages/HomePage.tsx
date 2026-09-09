@@ -118,7 +118,7 @@ export default function HomePage() {
               {preview.name}
             </h3>
             <p className="mt-1 text-sm text-fog-500">
-              {preview.city}, {preview.region} ?{" "}
+              {preview.city}, {preview.region} ·{" "}
               {formatDistance(preview.logistics.distanceKm, preferences.units)}{" "}
               · {preview.logistics.travelMinutes} min
             </p>

@@ -117,7 +117,6 @@ apiRouter.get(
   "/preferences",
   asyncRoute(async (req, res) => {
     const user = await dataStore.get("users", req.auth.userId)
-    requireOwnership(user, req.auth.userId)
     res.json(user.preferences || {})
   }),
 )
@@ -126,7 +125,6 @@ apiRouter.put(
   "/preferences",
   asyncRoute(async (req, res) => {
     const user = await dataStore.get("users", req.auth.userId)
-    requireOwnership(user, req.auth.userId)
     const updated = await dataStore.update("users", req.auth.userId, {
       preferences: req.body || {},
     })

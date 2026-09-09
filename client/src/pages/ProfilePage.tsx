@@ -29,7 +29,7 @@ export default function ProfilePage() {
             {user?.name}
           </h1>
           <p className="text-sm text-fog-500">
-            {user·.role} · {user·.email}
+            {user?.role} · {user?.email}
           </p>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ProfilePage() {
                     onClick={() => toggleSaved(l.id)}
                     className="rounded-md px-2 py-1 text-fog-600 hover:bg-status-restricted/10 hover:text-status-restricted"
                   >
-                    Ă—
+                    ×
                   </button>
                 </li>
               ))}

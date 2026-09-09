@@ -61,7 +61,7 @@ export default function AuthForm({
             id="af-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ivan KovaÄŤ"
+            placeholder="Your name"
             autoComplete="name"
           />
         </div>
@@ -84,7 +84,7 @@ export default function AuthForm({
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="????????"
+          placeholder="Password"
           autoComplete="current-password"
           minLength={6}
         />

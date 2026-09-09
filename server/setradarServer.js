@@ -77,14 +77,14 @@ app.use((err, req, res, next) => {
 
 if (!process.env.VERCEL) app.listen(PORT, () => {
   console.log("=================================");
-  console.log("đźŽ¬ SetRadar Backend Server (ADK Multi-Agent)");
+  console.log("🎬 SetRadar Backend Server (ADK Multi-Agent)");
   console.log("=================================");
   console.log(`Server running on: http://localhost:${PORT}`);
   console.log(
-    `Gemini API: ${process.env.GEMINI_API_KEY ? "âś… Configured" : "âťŚ Missing"}`,
+    `Gemini API: ${process.env.GEMINI_API_KEY ? "✅ Configured" : "❌ Missing"}`,
   );
   console.log(
-    `Parallel API: ${process.env.PARALLEL_API_KEY ? "âś… Configured" : "âťŚ Missing"}`,
+    `Parallel API: ${process.env.PARALLEL_API_KEY ? "✅ Configured" : "❌ Missing"}`,
   );
   console.log(
     `Gemini Model: ${process.env.GEMINI_MODEL || "gemini-1.5-flash"}`,

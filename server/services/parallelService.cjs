@@ -2,7 +2,7 @@ class ParallelService {
   constructor() {
     this.apiKey = process.env.PARALLEL_API_KEY;
     this.baseUrl = "https://api.parallel.ai/v1/search";
-    this.maxRetries = 3;
+    this.maxRetries = 2;
     this.retryDelay = 2000;
   }
 
@@ -28,18 +28,10 @@ class ParallelService {
       ...options.additionalParams,
     };
 
-    if (
-      options.additionalParams?.search_type === "images" ||
-      options.additionalParams?.include_images
-    ) {
-      searchPayload.include_images = true;
-      searchPayload.search_type = "images";
-    }
-
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
         console.log(
-          `\nđź”Ť Parallel Search attempt ${attempt}/${this.maxRetries}`,
+          `\n🔎 Parallel Search attempt ${attempt}/${this.maxRetries}`,
         );
         console.log(`Queries: ${searchPayload.search_queries.length} queries`);
 
@@ -50,6 +42,7 @@ class ParallelService {
             "x-api-key": this.apiKey,
           },
           body: JSON.stringify(searchPayload),
+          signal: AbortSignal.timeout(options.timeoutMs || 12000),
         });
 
         if (!response.ok) {
@@ -104,7 +97,7 @@ class ParallelService {
         const normalized = this.normalizeResponse(data);
 
         console.log(
-          `âś… Parallel returned ${normalized.results.length} results`,
+          `✅ Parallel returned ${normalized.results.length} results`,
         );
         return normalized;
       } catch (error) {

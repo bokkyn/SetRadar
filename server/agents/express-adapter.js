@@ -120,7 +120,7 @@ export const agentRoutes = (app) => {
         return res.status(400).json({ error: cityValidation.error })
       }
 
-      console.log("\nđźŽ¬ Agent Request:")
+      console.log("\n🎬 Agent Request:")
 
       console.log(`  Location: ${location}`)
 

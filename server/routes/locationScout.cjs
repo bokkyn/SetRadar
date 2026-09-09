@@ -90,7 +90,7 @@ router.post("/", async (req, res) => {
           candidate.warnings = generateWarnings(details);
 
           console.log(
-            `âś… ${candidate.name}: ${images.length} images, score: ${candidate.canWeShootScore}`,
+            `✅ ${candidate.name}: ${images.length} images, score: ${candidate.canWeShootScore}`,
           );
 
           return candidate;

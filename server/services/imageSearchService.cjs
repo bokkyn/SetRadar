@@ -49,38 +49,38 @@ class ImageSearchService {
       if (this.imageCache.has(cacheKey)) {
         const cached = this.imageCache.get(cacheKey);
         if (Date.now() - cached.timestamp < this.cacheTimeout) {
-          console.log(`âś… Using cached images for ${candidate.name}`);
+          console.log(`✅ Using cached images for ${candidate.name}`);
           return cached.images;
         }
       }
 
-      console.log(`\nđź”Ť Finding photos for: ${candidate.name}`);
+      console.log(`\n🔎 Finding photos for: ${candidate.name}`);
 
       if (DUMMY_MODE) {
-        console.log(`  đź§Ş TEST MODE - Using only g-i-s, no Gemini`);
+        console.log(`  🧪 TEST MODE - Using only g-i-s, no Gemini`);
 
         const allImages = await this.searchGoogleImages(
           candidate,
           candidate.name,
         );
-        console.log(`  đź“¸ Found ${allImages.length} images from Google`);
+        console.log(`  🖼️ Found ${allImages.length} images from Google`);
 
         const uniqueImages = await this.deduplicateImages(allImages);
         console.log(
-          `  đź”Ť ${uniqueImages.length} unique images after deduplication`,
+          `  🔎 ${uniqueImages.length} unique images after deduplication`,
         );
 
         const finalImages = uniqueImages.slice(0, 3);
 
         if (finalImages.length > 0) {
           console.log(
-            `âś… Final: ${finalImages.length} photos for ${candidate.name}`,
+            `✅ Final: ${finalImages.length} photos for ${candidate.name}`,
           );
           this.cacheImage(cacheKey, finalImages);
           return finalImages;
         }
 
-        console.log(`âťŚ No images found for ${candidate.name}`);
+        console.log(`❌ No images found for ${candidate.name}`);
         return [];
       }
 
@@ -96,16 +96,14 @@ class ImageSearchService {
                 search_queries: [
                   `${query} building exterior photo`,
                   `${query} architecture facade`,
-                  `${query} street view landmark`,
-                  `${query} ${candidate.address || ""} photo`,
                 ],
               },
               {
                 objective: `Find trustworthy photographs of ${query}. Return direct image URLs when available.`,
-                additionalParams: { include_images: true, search_type: "images" },
+                timeoutMs: 8000,
               },
             ),
-            12000,
+            9000,
           );
           allImages = this.imagesFromParallel(parallelImages, candidate);
         } catch (error) {
@@ -119,19 +117,14 @@ class ImageSearchService {
       }
 
       if (allImages.length < 3) {
-        const translatedName = await this.translateToLocalLanguage(candidate);
-        console.log(`  đźŚŤ Local name: ${translatedName}`);
-        const gisImages = await this.searchGoogleImages(
-          candidate,
-          translatedName,
-        );
+        const gisImages = await this.searchGoogleImages(candidate, candidate.name);
         allImages = [...allImages, ...gisImages];
       }
-      console.log(`  đź“¸ Found ${allImages.length} total images from providers`);
+      console.log(`  🖼️ Found ${allImages.length} total images from providers`);
 
       const uniqueImages = await this.deduplicateImages(allImages);
       console.log(
-        `  đź”Ť ${uniqueImages.length} unique images after deduplication`,
+        `  🔎 ${uniqueImages.length} unique images after deduplication`,
       );
 
       const relevantImages = await this.filterRelevantImages(
@@ -140,14 +133,14 @@ class ImageSearchService {
         uniqueImages,
       );
       console.log(
-        `  âś… ${relevantImages.length} relevant images after Gemini check`,
+        `  ✅ ${relevantImages.length} relevant images after Gemini check`,
       );
 
       const finalImages = relevantImages.slice(0, 3);
 
       if (finalImages.length > 0) {
         console.log(
-          `âś… Final: ${finalImages.length} photos for ${candidate.name}`,
+          `✅ Final: ${finalImages.length} photos for ${candidate.name}`,
         );
         this.cacheImage(cacheKey, finalImages);
         return finalImages;
@@ -155,7 +148,7 @@ class ImageSearchService {
 
       if (uniqueImages.length > 0 && !this.isGeminiConfigured()) {
         console.log(
-          `âš ď¸Ź Using ${Math.min(3, uniqueImages.length)} images without Gemini check`,
+          `⚠️ Using ${Math.min(3, uniqueImages.length)} images without Gemini check`,
         );
         const fallbackImages = uniqueImages.slice(0, 3);
         this.cacheImage(cacheKey, fallbackImages);
@@ -164,7 +157,7 @@ class ImageSearchService {
 
       const fallback = this.logoFallback(candidate.name);
       this.cacheImage(cacheKey, [fallback]);
-      console.log(`âš ď¸Ź No photos found for ${candidate.name}; using logo fallback`);
+      console.log(`⚠️ No photos found for ${candidate.name}; using logo fallback`);
       return [fallback];
     } catch (error) {
       console.error(`Error finding images for ${candidate.name}:`, error);
@@ -296,23 +289,16 @@ class ImageSearchService {
   async searchGoogleImages(candidate, searchName) {
     const images = [];
 
-    const searchQueries = [
-      {
-        term: `${searchName} ${candidate.city || ""} building exterior`,
-        size: "isz:l",
-      },
-      {
-        term: `${candidate.name} ${candidate.city || ""} architecture`,
-        size: "isz:l",
-      },
-      { term: `${searchName} ${candidate.city || ""} photo`, size: "isz:l" },
-    ];
+    const searchQueries = [{
+      term: `${searchName} ${candidate.city || ""} building exterior`,
+      size: "isz:l",
+    }];
 
     for (const queryObj of searchQueries) {
       if (images.length >= 8) break;
 
       try {
-        console.log(`  đź”Ž Google search: "${queryObj.term}" (large images)`);
+        console.log(`  🔍 Google search: "${queryObj.term}" (large images)`);
 
         const results = await this.performGisSearch(
           queryObj.term,
@@ -320,7 +306,7 @@ class ImageSearchService {
         );
 
         if (results && results.length > 0) {
-          console.log(`  đź“¸ Got ${results.length} raw Google results`);
+          console.log(`  🖼️ Got ${results.length} raw Google results`);
 
           for (const result of results) {
             if (images.length >= 8) break;
@@ -350,7 +336,7 @@ class ImageSearchService {
           }
         } else {
           console.log(
-            `  âš ď¸Ź Google returned no parseable results for this query`,
+            `  ⚠️ Google returned no parseable results for this query`,
           );
         }
       } catch (error) {
@@ -373,7 +359,7 @@ class ImageSearchService {
 
       const timeout = setTimeout(() => {
         reject(new Error("Google Image Search timeout"));
-      }, 15000);
+      }, 7000);
 
       gis(opts, (error, results) => {
         clearTimeout(timeout);
@@ -381,11 +367,10 @@ class ImageSearchService {
         if (error) {
           reject(error);
         } else if (results && results.length > 0) {
-          console.log(`  đź§Ş g-i-s parser returned ${results.length} results`);
+          console.log(`  🧪 g-i-s parser returned ${results.length} results`);
           resolve(results);
         } else {
-          console.log("  âš ď¸Ź g-i-s returned 0 results; trying HTML fallback");
-          this.searchGoogleHtml(searchTerm).then(resolve).catch(reject);
+          resolve([]);
         }
       });
     });
@@ -435,7 +420,7 @@ class ImageSearchService {
     }
 
     console.log(
-      `  đź§Ş HTML fallback parsed ${results.length} source image URLs (with real dimensions) via "ou" JSON`,
+      `  🧪 HTML fallback parsed ${results.length} source image URLs (with real dimensions) via "ou" JSON`,
     );
 
     if (results.length > 0) return results;
@@ -472,12 +457,12 @@ class ImageSearchService {
     }
 
     console.log(
-      `  đź–Ľď¸Ź Resolved ${sourceImages.filter(Boolean).length} original images from ${sourcePageUrls.length} Google source pages`,
+      `  🖼️ Resolved ${sourceImages.filter(Boolean).length} original images from ${sourcePageUrls.length} Google source pages`,
     );
     if (results.length > 0) return results;
 
     console.log(
-      `  âš ď¸Ź No "ou" JSON matches found - Google may have changed page format, falling back to generic URL scraping`,
+      `  ⚠️ No "ou" JSON matches found - Google may have changed page format, falling back to generic URL scraping`,
     );
 
     const urls = html.match(/https?:[^"'<>\s\\]+/g) || [];
@@ -493,7 +478,7 @@ class ImageSearchService {
       }
     }
 
-    console.log(`  đź§Ş Generic fallback parsed ${results.length} image URLs`);
+    console.log(`  🧪 Generic fallback parsed ${results.length} image URLs`);
     return results;
   }
 
@@ -554,64 +539,12 @@ class ImageSearchService {
    * Dedupliciraj slike koristeÄ‡i perceptual hash
    */
   async deduplicateImages(images) {
-    const uniqueImages = [];
-    const localHashes = [];
-    const now = Date.now();
-
-    for (const [hash, timestamp] of this.usedImageHashesGlobal) {
-      if (now - timestamp >= this.cacheTimeout) {
-        this.usedImageHashesGlobal.delete(hash);
-      }
-    }
-
-    for (const image of images) {
-      try {
-        const hash = await this.calculateImageHash(image.url);
-
-        if (!hash) {
-          const isUrlDuplicate = uniqueImages.some(
-            (img) => img.url === image.url,
-          );
-          if (!isUrlDuplicate) {
-            uniqueImages.push(image);
-          }
-          continue;
-        }
-
-        let isDuplicate = false;
-        for (const existingHash of localHashes) {
-          if (this.hammingDistance(hash, existingHash) <= 5) {
-            isDuplicate = true;
-            console.log(
-              `  âŹ­ď¸Ź Duplicate (similar) detected: ${image.url.substring(0, 60)}...`,
-            );
-            break;
-          }
-        }
-
-        if (!isDuplicate) {
-          for (const existingHash of this.usedImageHashesGlobal.keys()) {
-            if (this.hammingDistance(hash, existingHash) <= 5) {
-              isDuplicate = true;
-              console.log(
-                `  âŹ­ď¸Ź Duplicate (same as previous location) detected: ${image.url.substring(0, 60)}...`,
-              );
-              break;
-            }
-          }
-        }
-
-        if (!isDuplicate) {
-          localHashes.push(hash);
-          this.usedImageHashesGlobal.set(hash, now);
-          uniqueImages.push(image);
-        }
-      } catch (error) {
-        uniqueImages.push(image);
-      }
-    }
-
-    return uniqueImages;
+    const seen = new Set();
+    return images.filter((image) => {
+      if (!image?.url || seen.has(image.url)) return false;
+      seen.add(image.url);
+      return true;
+    });
   }
 
   /**
@@ -676,22 +609,22 @@ class ImageSearchService {
     if (!geminiService.isConfigured()) return candidates;
 
     const relevantImages = [];
-    const imagesToCheck = candidates.slice(0, 10);
-
-    for (const image of imagesToCheck) {
-      try {
-        const verification = await this.checkImageRelevance(
-          candidate,
-          context,
-          image,
-        );
-        if (verification.relevant) {
-          relevantImages.push({ image, score: verification.score });
+    const imagesToCheck = candidates.slice(0, 4);
+    const verified = await Promise.all(
+      imagesToCheck.map(async (image) => {
+        try {
+          const verification = await this.withTimeout(
+            this.checkImageRelevance(candidate, context, image),
+            7000,
+          );
+          return verification.relevant ? { image, score: verification.score } : null;
+        } catch (error) {
+          console.warn(`  Gemini image verification failed for ${image.url}: ${error.message}`);
+          return null;
         }
-      } catch (error) {
-        console.warn(`  Gemini image verification failed for ${image.url}: ${error.message}`);
-      }
-    }
+      }),
+    );
+    relevantImages.push(...verified.filter(Boolean));
 
     return relevantImages
       .sort((a, b) => b.score - a.score)

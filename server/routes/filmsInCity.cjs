@@ -103,9 +103,9 @@ router.post("/", async (req, res) => {
           film.images = images || [];
 
           if (images.length > 0) {
-            console.log(`âś… Found ${images.length} images for ${film.title}`);
+            console.log(`✅ Found ${images.length} images for ${film.title}`);
           } else {
-            console.log(`âš ď¸Ź No images for ${film.title}`);
+            console.log(`⚠️ No images for ${film.title}`);
           }
 
           return film;
