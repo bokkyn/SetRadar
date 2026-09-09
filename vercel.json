@@ -16,10 +16,7 @@
     }
   ],
   "functions": {
-    "api/index.cjs": {
-      "maxDuration": 300
-    },
-    "api/agent.cjs": {
+    "api/*.cjs": {
       "maxDuration": 300
     }
   }
