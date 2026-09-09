@@ -25,19 +25,10 @@ async function start({ listen = true } = {}) {
   await mongoose.connect(config.mongoUri, { dbName: config.mongoDb });
   console.log("Connected to MongoDB");
 
-  const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:8443")
-    .split(",")
-    .map((origin) => origin.trim())
-    .filter(Boolean);
-
   app.use(helmet());
   app.use(
     cors({
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin))
-          return callback(null, true);
-        callback(new Error("CORS origin is not allowed."));
-      },
+      origin: true,
       credentials: true,
     }),
   );
