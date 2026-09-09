@@ -1,5 +1,7 @@
 # SetRadar
 
+![SetRadar screenshot](<Snimka zaslona 2026-09-09 213512.png>)
+
 SetRadar helps production teams discover, compare, and organize real-world filming locations.
 
 ## Features

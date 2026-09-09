@@ -432,9 +432,7 @@ export const mockLocations: Location[] = [
     city: "New York",
     region: "United States",
     images: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200&h=800&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1200&h=800&fit=crop&auto=format",
+      "https://plazaconstruction-live-4722ba4b72b94e2d-9190b8d.aldryn-media.io/filer_public_thumbnails/filer_public/a2/d5/a2d507b2-d161-4fb6-9269-5edd839f86a7/metnick_160329_0045.jpg__750x500_q90_crop_subsampling-2.jpg",
     ],
     whyItMatches:
       "A vast former shipbuilding complex with raw steel, concrete volumes and controllable industrial interiors - a strong visual starting point for a contained night sequence near New York.",
