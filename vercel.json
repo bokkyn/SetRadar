@@ -4,19 +4,19 @@
   "rewrites": [
     {
       "source": "/api/agent",
-      "destination": "/api/agent.cjs"
+      "destination": "/api/agent.mjs"
     },
     {
       "source": "/api/agent/:path*",
-      "destination": "/api/agent.cjs"
+      "destination": "/api/agent.mjs"
     },
     {
       "source": "/api/:path*",
-      "destination": "/api/index.cjs"
+      "destination": "/api/index.mjs"
     }
   ],
   "functions": {
-    "api/*.cjs": {
+    "api/*.mjs": {
       "maxDuration": 300
     }
   }
